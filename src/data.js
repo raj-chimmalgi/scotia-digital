@@ -1,0 +1,10 @@
+const data = {
+  count: 13,
+  results: [
+    { id: 1, firstName: 'David', lastName: 'Wallace' },
+    { id: 2, firstName: 'Sonia', lastName: 'Ross' },
+    { id: 3, firstName: 'Anthony', lastName: 'Thomson' },
+  ],
+}
+
+export default data

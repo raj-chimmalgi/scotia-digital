@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import data from './data'
 
-function App() {
+const USERS_URL = 'https://example.com/api/users'
+
+export default function Table() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <table className='table'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>// render elements in tbody</tbody>
+      </table>
+      <section className='pagination'>
+        <button className='first-page-btn'>first</button>
+        <button className='previous-page-btn'>previous</button>
+        <button className='next-page-btn'>next</button>
+        <button className='last-page-btn'>last</button>
+      </section>
     </div>
-  );
+  )
 }
-
-export default App;
