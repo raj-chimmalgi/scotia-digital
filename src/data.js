@@ -1,5 +1,5 @@
 const data = {
-  count: 13,
+  count: 3,
   results: [
     { id: 1, firstName: 'David', lastName: 'Wallace' },
     { id: 2, firstName: 'Sonia', lastName: 'Ross' },

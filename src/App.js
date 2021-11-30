@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import data from './data'
 
 const USERS_URL = 'https://example.com/api/users'
 
 export default function Table() {
+  const [results, setResults] = useState([])
+  const [page, setPage] = useState(0)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    // fetch(`${USERS_URL}/?page=${page}`)
+    // .then((res)=>{
+    //   if(res.ok) return res.json()
+    //   throw new Error('Something went wrong fetching data')
+    // })
+    // .then((results) => setResults(results))
+    // .catch((err) => setError(err.message))
+    setResults([data.results])
+    console.log(results)
+  }, [])
+
   return (
     <div>
       <table className='table'>
