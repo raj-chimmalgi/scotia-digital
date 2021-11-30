@@ -16,10 +16,9 @@ export default function Table() {
     // })
     // .then((results) => setResults(results))
     // .catch((err) => setError(err.message))
-    setResults([data.results])
-    console.log(results)
+    setResults(data.results)
   }, [])
-
+  console.log(results)
   return (
     <div>
       <table className='table'>
@@ -30,7 +29,17 @@ export default function Table() {
             <th>Last Name</th>
           </tr>
         </thead>
-        <tbody>// render elements in tbody</tbody>
+        <tbody>
+          {results.map((result) => {
+            return (
+              <tr key={result.id}>
+                <td>{result.id}</td>
+                <td>{result.firstName}</td>
+                <td>{result.lastName}</td>
+              </tr>
+            )
+          })}
+        </tbody>
       </table>
       <section className='pagination'>
         <button className='first-page-btn'>first</button>
