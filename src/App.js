@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import data from './data'
+import mockData from './data'
 
 const USERS_URL = 'https://example.com/api/users'
 
 export default function Table() {
-  const [results, setResults] = useState([])
+  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(0)
   const [error, setError] = useState('')
 
+  let totalPage = 0
+
   useEffect(() => {
+    setLoading(true)
+
     // fetch(`${USERS_URL}/?page=${page}`)
-    // .then((res)=>{
-    //   if(res.ok) return res.json()
-    //   throw new Error('Something went wrong fetching data')
-    // })
-    // .then((results) => setResults(results))
+    //   .then((res) => {
+    //     if (res.ok) return res.json()
+    //     throw new Error('Something went wrong fetching data')
+    //   })
+    //   .then((data) => {
+    //     setResults(results)
+    //     totalPage = Math.floor(data.count / 10)
+    //     setLoading(false)
+    //   })
     // .catch((err) => setError(err.message))
-    setResults(data.results)
-  }, [])
-  console.log(results)
+    setData(mockData)
+    totalPage = Math.floor(data.count / 10)
+  }, [page])
+
+  const goToFirstPage = () => {
+    setPage(0)
+  }
+
+  const goToPreviousPage = () => {
+    setPage((page) => page - 1)
+  }
+
+  const goToNextPage = () => {
+    setPage((page) => page + 1)
+  }
+
+  const goToLastPage = () => {
+    setPage(totalPage)
+  }
+
   return (
     <div>
       <table className='table'>
@@ -30,7 +56,7 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          {results.map((result) => {
+          {data.results.map((result) => {
             return (
               <tr key={result.id}>
                 <td>{result.id}</td>
@@ -42,10 +68,18 @@ export default function Table() {
         </tbody>
       </table>
       <section className='pagination'>
-        <button className='first-page-btn'>first</button>
-        <button className='previous-page-btn'>previous</button>
-        <button className='next-page-btn'>next</button>
-        <button className='last-page-btn'>last</button>
+        <button className='first-page-btn' onClick={goToFirstPage}>
+          first
+        </button>
+        <button className='previous-page-btn' onClick={goToPreviousPage}>
+          previous
+        </button>
+        <button className='next-page-btn' onClick={goToNextPage}>
+          next
+        </button>
+        <button className='last-page-btn' onClick={goToLastPage}>
+          last
+        </button>
       </section>
     </div>
   )
