@@ -26,6 +26,7 @@ export default function Table() {
     //   })
     // .catch((err) => setError(err.message))
     setData(mockData)
+    console.log(mockData)
     totalPage = Math.floor(data.count / 10)
   }, [page])
 
@@ -56,15 +57,16 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.results.map((result) => {
-            return (
-              <tr key={result.id}>
-                <td>{result.id}</td>
-                <td>{result.firstName}</td>
-                <td>{result.lastName}</td>
-              </tr>
-            )
-          })}
+          {data &&
+            data.results.map((result) => {
+              return (
+                <tr key={result.id}>
+                  <td>{result.id}</td>
+                  <td>{result.firstName}</td>
+                  <td>{result.lastName}</td>
+                </tr>
+              )
+            })}
         </tbody>
       </table>
       <section className='pagination'>
