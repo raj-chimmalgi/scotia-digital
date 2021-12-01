@@ -20,7 +20,7 @@ export default function Table() {
     //     throw new Error('Something went wrong fetching data')
     //   })
     //   .then((data) => {
-    //     setResults(results)
+    //     setData(results)
     //     totalPage = Math.floor(data.count / 10)
     //     setLoading(false)
     //   })
